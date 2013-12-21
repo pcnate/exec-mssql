@@ -12,12 +12,13 @@ Execute you *.sql file which contains multiple sql statements. Usate: init datab
 	```shell
 	npm install -g execsql
 	```
+
 2. Configure your db account first
 	```shell
 	execsql -c "root" "root"
 	```
 
-2. Execute a `.sql` file
+3. Execute a `.sql` file
 	```shell
 	execsql ./db.sql
 	```
