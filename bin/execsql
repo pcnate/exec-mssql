@@ -11,8 +11,9 @@ var fs = require('fs'),
 
 if (isConfig) {
 	var config = {
-		user: argv['_'][0],
-		password: argv['_'][1]
+		host: argv['_'][0],
+		user: argv['_'][1],
+		password: argv['_'][2]
 	};
 	if (_.some(config, function (val) {
 		return val === undefined;

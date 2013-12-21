@@ -13,9 +13,9 @@ Execute you *.sql file which contains multiple sql statements. Usate: init datab
 	npm install -g execsql
 	```
 
-2. Configure your db account first
+2. Configure your db access for the first time
 	```shell
-	execsql -c "root" "root"
+	execsql -c "localhost" "root" "root"
 	```
 
 3. Execute a `.sql` file
@@ -34,6 +34,7 @@ Execute you *.sql file which contains multiple sql statements. Usate: init datab
 	```js
 	var execsql = require('execsql'),
 		dbConfig = {
+			host: 'localhost',
 			user: 'root',
 			password: 'root'
 		},

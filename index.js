@@ -2,8 +2,7 @@ var fs = require('fs'),
 	_ = require('underscore'),
 	mysql = require('mysql'),
 	config = {
-		multipleStatements: true,
-		host: 'localhost'
+		multipleStatements: true
 	};
 
 function exec(filename, callback) {
@@ -24,6 +23,6 @@ function exec(filename, callback) {
 
 exports.exec = exec;
 exports.config = function (options) {
-	_.extend(config, _.pick(options, ['user', 'password']));
+	_.extend(config, _.pick(options, ['host', 'user', 'password']));
 	return this;
 }
