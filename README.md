@@ -33,13 +33,13 @@ Execute you *.sql file which contains multiple sql statements. Usate: init datab
 2. Require and use
 	```js
 	var execsql = require('execsql'),
-		dbConfig = {
+		connConfig = {
 			host: 'localhost',
 			user: 'root',
 			password: 'root'
 		},
 		sqlFile = __dirname + '/db.sql';
-	execsql.config(dbConfig)
+	execsql.config(connConfig)
 		.exec(sqlFile, function(err, results){
 			console.log(results);
 		});
