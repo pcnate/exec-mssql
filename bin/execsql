@@ -1,8 +1,38 @@
 #!/usr/bin/env node
 
-require('../')(process.argv[2], function (err, results) {
-	if (err) throw err;
-	for (var i = 0; i < results.length; i++) {
-		console.log(i + ': ' + JSON.stringify(results[i]));
+var fs = require('fs'),
+	_ = require('underscore'),
+	execsql = require('../'),
+	configFile = __dirname + '/../config.dat',
+	argv = require('optimist')
+		.boolean('config').alias('c', 'config')
+		.argv,
+	isConfig = argv['config'];
+
+if (isConfig) {
+	var config = {
+		user: argv['_'][0],
+		password: argv['_'][1]
+	};
+	if (_.some(config, function (val) {
+		return val === undefined;
+	})) {
+		throw new Error('incomplete db config');
 	}
-});
+	fs.writeFileSync(configFile, JSON.stringify(config));
+	console.log('db config has been set');
+} else {
+	var config;
+	try {
+		config = JSON.parse(fs.readFileSync(configFile));
+	} catch (err) {
+		throw new Error('invalid db config');
+	}
+	var sqlFile = argv['_'][0];
+	execsql.config(config).exec(sqlFile, function (err, results) {
+		if (err) throw err;
+		results.forEach(function (result, i) {
+			console.log(i + ' -- \r\n' + JSON.stringify(result));
+		});
+	});
+}
