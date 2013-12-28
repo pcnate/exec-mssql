@@ -6,11 +6,14 @@ var fs = require('fs'),
 	configFile = __dirname + '/../config.dat',
 	argv = require('optimist')
 		.boolean('config').alias('c', 'config')
+		.boolean('file').alias('f', 'file')
 		.argv,
-	isConfig = argv['config'];
+	isConfig = argv['config'],
+	isFile = argv['file'],
+	config;
 
 if (isConfig) {
-	var config = {
+	config = {
 		host: argv['_'][0],
 		user: argv['_'][1],
 		password: argv['_'][2]
@@ -23,17 +26,23 @@ if (isConfig) {
 	fs.writeFileSync(configFile, JSON.stringify(config));
 	console.log('db config has been set');
 } else {
-	var config;
 	try {
 		config = JSON.parse(fs.readFileSync(configFile));
 	} catch (err) {
 		throw new Error('invalid db config');
 	}
-	var sqlFile = argv['_'][0];
-	execsql.config(config).exec(sqlFile, function (err, results) {
+	execsql.config(config);
+	if (isFile) {
+		execsql.execFile(argv['_'][0], done);
+	} else {
+		execsql.exec(argv['_'][0], done);
+	}
+	function done(err, results) {
 		if (err) throw err;
 		results.forEach(function (result, i) {
 			console.log(i + ' -- \r\n' + JSON.stringify(result));
 		});
-	});
+		execsql.end();
+		process.exit(0);
+	}
 }

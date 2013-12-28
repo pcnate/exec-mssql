@@ -1,27 +1,43 @@
 {
-	"name": "execsql",
-	"version": "0.0.1",
-	"description": "Execute you *.sql file which contains multiple sql statements. Usate: init database.",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"keywords": [
-		"mysql",
-		"execsql",
-		"initsql"
-	],
-	"author": "Camwide",
-	"contributors": ["Fritz-Lium"],
-	"homepage": "https://github.com/Fritz-Lium/execsql",
-	"repository": "git@github.com:Fritz-Lium/execsql.git",
-	"license": "BSD-2-Clause",
-	"dependencies": {
-		"underscore": "1.5.2",
-		"optimist": "0.6.0",
-		"mysql": "2.0.0-rc2"
-	},
-	"bin": {
-		"execsql": "./bin/execsql"
-	}
+  "name": "execsql",
+  "version": "0.0.2",
+  "description": "Execute you *.sql file which contains multiple sql statements. Usate: init database.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mysql",
+    "execsql",
+    "initsql"
+  ],
+  "author": {
+    "name": "Camwide"
+  },
+  "contributors": [
+    {
+      "name": "Fritz-Lium"
+    }
+  ],
+  "homepage": "https://github.com/Fritz-Lium/execsql",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Fritz-Lium/execsql.git"
+  },
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "underscore": "1.5.2",
+    "optimist": "0.6.0",
+    "mysql": "2.0.0-rc2"
+  },
+  "bin": {
+    "execsql": "./bin/execsql"
+  },
+  "readme": "execsql\n=======\n\nAn npm project. Node.js\nExecute you *.sql file which contains multiple sql statements. Usate: init database.\n\n## Usage\n\n### As a CLI tool\n\n1. Make sure that you have `execsql` installed globally\n\t```shell\n\tnpm install -g execsql\n\t```\n\n2. Configure your db access for the first time\n\t```shell\n\texecsql -c \"localhost\" \"root\" \"root\"\n\t```\n\n3. Execute a `.sql` file\n\t```shell\n\texecsql ./db.sql\n\t```\n\n### As a Node dependency\n\n1. Make sure that you have `execsql` installed locally\n\t```shell\n\tnpm install execsql\n\t```\n\n2. Require and use\n\t```js\n\tvar execsql = require('execsql'),\n\t\tdbConfig = {\n\t\t\thost: 'localhost',\n\t\t\tuser: 'root',\n\t\t\tpassword: 'root'\n\t\t},\n\t\tsqlFile = __dirname + '/db.sql';\n\texecsql.config(dbConfig)\n\t\t.exec(sqlFile, function(err, results){\n\t\t\tconsole.log(results);\n\t\t});\n\t```\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/Fritz-Lium/execsql/issues"
+  },
+  "_id": "execsql@0.0.1",
+  "_from": "execsql@0.0.1"
 }

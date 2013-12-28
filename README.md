@@ -18,9 +18,14 @@ Execute you *.sql file which contains multiple sql statements. Usate: init datab
 	execsql -c "localhost" "root" "root"
 	```
 
-3. Execute a `.sql` file
+- Execute a bunch of sql statements
 	```shell
-	execsql ./db.sql
+	execsql "use db_cam; delete from admin;"
+	```
+
+- Execute a `.sql` file
+	```shell
+	execsql -f ./db.sql
 	```
 
 ### As a Node dependency
@@ -33,14 +38,16 @@ Execute you *.sql file which contains multiple sql statements. Usate: init datab
 2. Require and use
 	```js
 	var execsql = require('execsql'),
-		connConfig = {
+		dbConfig = {
 			host: 'localhost',
 			user: 'root',
 			password: 'root'
 		},
+		sql = 'use db_cam;',
 		sqlFile = __dirname + '/db.sql';
-	execsql.config(connConfig)
-		.exec(sqlFile, function(err, results){
+	execsql.config(dbConfig)
+		.exec(sql)
+		.execFile(sqlFile, function(err, results){
 			console.log(results);
-		});
+		}).end();
 	```
