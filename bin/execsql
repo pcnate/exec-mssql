@@ -2,7 +2,7 @@
 
 var fs = require('fs'),
 	_ = require('underscore'),
-	execsql = require('../'),
+	execsql = require('..'),
 	configFile = __dirname + '/../config.dat',
 	argv = require('optimist')
 		.boolean('config').alias('c', 'config')
