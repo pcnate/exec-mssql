@@ -9,29 +9,29 @@ Execute you *.sql file which contains multiple sql statements. Usate: init datab
 ### As a CLI tool
 
 1. Make sure that you have `execsql` installed globally
-	```shell
+	```sh
 	npm install -g execsql
 	```
 
 2. Configure your db access for the first time
-	```shell
+	```sh
 	execsql -c "localhost" "root" "root"
 	```
 
 - Execute a bunch of sql statements
-	```shell
+	```sh
 	execsql "use db_cam; delete from admin;"
 	```
 
 - Execute a `.sql` file
-	```shell
+	```sh
 	execsql -f ./db.sql
 	```
 
 ### As a Node dependency
 
 1. Make sure that you have `execsql` installed locally
-	```shell
+	```sh
 	npm install execsql
 	```
 

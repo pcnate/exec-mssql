@@ -1,6 +1,6 @@
 {
 	"name": "execsql",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Execute you *.sql file which contains multiple sql statements. Usate: init database.",
 	"main": "index.js",
 	"keywords": [
@@ -18,10 +18,10 @@
 			"url": "https://github.com/Fritz-Lium"
 		}
 	],
-	"homepage": "https://github.com/Fritz-Lium/execsql",
+	"homepage": "https://github.com/node-fun/execsql",
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:Fritz-Lium/execsql.git"
+		"url": "git@github.com:node-fun/execsql.git"
 	},
 	"license": "BSD-2-Clause",
 	"dependencies": {
@@ -33,6 +33,6 @@
 		"execsql": "./bin/execsql"
 	},
 	"bugs": {
-		"url": "https://github.com/Fritz-Lium/execsql/issues"
+		"url": "https://github.com/node-fun/execsql/issues"
 	}
 }
