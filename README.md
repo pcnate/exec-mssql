@@ -13,9 +13,12 @@ Execute your *.sql files which contain multiple sql statements.
 	npm install -g execsql
 	```
 
-2. Configure your db access for the first time
+2. Configure your db access for the first time. Usage: `execsql -c host [port] user password`.
 	```sh
+	# default port is 3306
 	execsql -c "localhost" "root" "root"
+	# when using a custom port like 4242
+	execsql -c "localhost" 4242 "root" "root"
 	```
 
 - Execute a bunch of sql statements
@@ -40,6 +43,7 @@ Execute your *.sql files which contain multiple sql statements.
 	var execsql = require('execsql'),
 		dbConfig = {
 			host: 'localhost',
+			port: 3306, // optional, default is 3306
 			user: 'root',
 			password: 'root'
 		},
@@ -49,6 +53,7 @@ Execute your *.sql files which contain multiple sql statements.
 	execsql.config(dbConfig)
 		.exec(sql)
 		.execFile(sqlFile, function (err, results) {
+			if (err) throw err;
 			console.log(results);
 		})
 		.end();

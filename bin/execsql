@@ -10,13 +10,15 @@ var fs = require('fs'),
 		.argv,
 	isConfig = argv['config'],
 	isFile = argv['file'],
+	hasPort = isConfig && argv['_'].length === 4,
 	config;
 
 if (isConfig) {
 	config = {
 		host: argv['_'][0],
-		user: argv['_'][1],
-		password: argv['_'][2]
+		port: hasPort ? argv['_'][1] : 3306,
+		user: argv['_'][hasPort ? 2 : 1],
+		password: argv['_'][hasPort ? 3 : 2]
 	};
 	if (_.some(config, function (val) {
 		return val === undefined;
