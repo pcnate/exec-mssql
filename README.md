@@ -2,13 +2,13 @@ execsql
 =======
 
 An npm project. Node.js
-Execute you *.sql file which contains multiple sql statements. Usate: init database.
+Execute your *.sql files which contain multiple sql statements.
 
 ## Usage
 
 ### As a CLI tool
 
-1. Make sure that you have `execsql` installed globally
+1. Make sure you have `execsql` installed globally
 	```sh
 	npm install -g execsql
 	```
@@ -30,7 +30,7 @@ Execute you *.sql file which contains multiple sql statements. Usate: init datab
 
 ### As a Node dependency
 
-1. Make sure that you have `execsql` installed locally
+1. Make sure you have `execsql` installed locally
 	```sh
 	npm install execsql
 	```
@@ -45,9 +45,11 @@ Execute you *.sql file which contains multiple sql statements. Usate: init datab
 		},
 		sql = 'use db_cam;',
 		sqlFile = __dirname + '/db.sql';
+
 	execsql.config(dbConfig)
 		.exec(sql)
-		.execFile(sqlFile, function(err, results){
+		.execFile(sqlFile, function (err, results) {
 			console.log(results);
-		}).end();
+		})
+		.end();
 	```
