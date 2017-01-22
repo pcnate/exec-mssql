@@ -11,7 +11,9 @@ function exec(sql, callback) {
 		if (!_.isArray(results)) {
 			results = [results];
 		}
-		callback(err, results);
+		if (typeof callback === 'function') {
+			callback(err, results);
+		}
 	});
 	return this;
 }
@@ -31,7 +33,7 @@ exports.end = function () {
 	return this;
 };
 exports.config = function (options) {
-	_.extend(config, _.pick(options, ['host', 'user', 'password']));
+	_.extend(config, _.pick(options, ['host', 'port', 'user', 'password']));
 	conn = mysql.createConnection(config);
 	conn.connect();
 	return this;
