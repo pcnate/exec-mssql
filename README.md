@@ -32,7 +32,7 @@ Execute your ms.sql files which contain multiple sql statements.\
 
 1. Make sure you have `exec-mssql` installed locally
 	```sh
-	npm install exec-mssql
+	npm install --save exec-mssql
 	```
 
 2. Require and use
