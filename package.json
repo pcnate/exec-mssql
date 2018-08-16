@@ -1,6 +1,6 @@
 {
 	"name": "exec-mssql",
-	"version": "0.0.4",
+	"version": "1.0.0",
 	"description": "Execute your *.sql files which contain multiple sql statements.",
 	"main": "index.js",
 	"keywords": [
