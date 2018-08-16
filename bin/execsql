@@ -7,19 +7,24 @@ var fs = require('fs'),
 	argv = require('optimist')
 		.boolean('config').alias('c', 'config')
 		.boolean('file').alias('f', 'file')
+		.boolean('encrypt').alias('e', 'encrypt')
 		.argv,
 	isConfig = argv['config'],
 	isFile = argv['file'],
-	hasPort = isConfig && argv['_'].length === 4,
 	config;
 
 if (isConfig) {
-	config = {
-		host: argv['_'][0],
-		port: hasPort ? argv['_'][1] : 3306,
-		user: argv['_'][hasPort ? 2 : 1],
-		password: argv['_'][hasPort ? 3 : 2]
-	};
+  config = {
+		server: argv['_'][0],
+  	database: argv['_'][1],
+  	user: argv['_'][2],
+    password: argv['_'][3],
+    options: {
+      encrypt: argv['encrypt'],
+      useColumnNames: true
+    }
+  };
+  console.log( config );
 	if (_.some(config, function (val) {
 		return val === undefined;
 	})) {
@@ -33,18 +38,37 @@ if (isConfig) {
 	} catch (err) {
 		throw new Error('invalid db config');
 	}
-	execsql.config(config);
-	if (isFile) {
-		execsql.execFile(argv['_'][0], done);
-	} else {
-		execsql.exec(argv['_'][0], done);
-	}
-	function done(err, results) {
-		if (err) throw err;
-		results.forEach(function (result, i) {
-			console.log(i + ' -- \r\n' + JSON.stringify(result));
-		});
-		execsql.end();
+	execsql.config( config ).then( () => {
+    var doop = null;
+
+    if( isFile ) {
+      console.log( 'executing execsql.execFile' );
+      doop = execsql.execFile
+    } else {
+      console.log( 'executing execsql.exec' );
+      doop = execsql.exec
+    }
+
+    if( doop ) {
+      doop( argv['_'][0] ).then( data => {
+        let err = data.err;
+        let resultsets = data.results.recordsets || null;
+        done( err, resultsets );
+      })
+    }
+    
+  });
+	function done( err, resultsets ) {
+    if (err) throw err;
+    
+    resultsets.forEach( ( resultset, i) => {
+      console.log( 'resultset', i );
+      resultset.forEach( (result, i) => {
+        console.log( JSON.stringify( result ) );
+      });
+    });
+
+    execsql.end();
 		process.exit(0);
 	}
 }

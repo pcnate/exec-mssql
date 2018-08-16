@@ -4,7 +4,7 @@
 	"description": "Execute your *.sql files which contain multiple sql statements.",
 	"main": "index.js",
 	"keywords": [
-		"mysql",
+		"mssql",
 		"execsql",
 		"initsql"
 	],
@@ -20,6 +20,10 @@
 		{
 			"name": "Alex Fournier",
 			"url": "https://github.com/alex-fournier"
+		},
+		{
+			"name": "Nathan Baker",
+			"url": "https://github.com/pcnate"
 		}
 	],
 	"homepage": "https://github.com/node-fun/execsql",
@@ -29,9 +33,10 @@
 	},
 	"license": "BSD-2-Clause",
 	"dependencies": {
-		"underscore": "1.8.3",
-		"optimist": "0.6.1",
-		"mysql": "2.11.1"
+		"dotenv": "^6.0.0",
+		"mssql": "^4.1.0",
+		"optimist": "^0.6.1",
+		"underscore": "^1.8.3"
 	},
 	"bin": {
 		"execsql": "./bin/execsql"
