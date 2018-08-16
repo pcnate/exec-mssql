@@ -37,18 +37,18 @@ Execute your ms.sql files which contain multiple sql statements.\
 
 2. Require and use
 	```js
-    var exec_mssql = require('exec-mssql'),
-      dbConfig = {
-        host: 'localhost',
-        database: 'myDatabase',
-        user: 'root',
-        password: 'root',
-        options: {
-          encrypt: false
-        }
-      },
-      sql = 'use db_cam;',
-      sqlFile = __dirname + '/db.sql';
+    var exec_mssql = require('exec-mssql');
+    const dbConfig = {
+      host:     'localhost',
+      database: 'myDatabase',
+      user:     'root',
+      password: 'root',
+      options:  {
+        encrypt: true
+      }
+    };
+    const sql = 'use db_cam;';
+    const sqlFile = __dirname + '/db.sql';
 
     exec_mssql.config( dbConfig ).then( () => {
       exec_mssql.exec( sql ).then( results => {
