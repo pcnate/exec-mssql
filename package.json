@@ -1,16 +1,16 @@
 {
-	"name": "execsql",
+	"name": "exec-mssql",
 	"version": "0.0.4",
 	"description": "Execute your *.sql files which contain multiple sql statements.",
 	"main": "index.js",
 	"keywords": [
 		"mssql",
-		"execsql",
+		"exec-mssql",
 		"initsql"
 	],
 	"author": {
-		"name": "Camwide",
-		"url": "https://github.com/ade951"
+		"name": "Nathan Baker",
+		"url": "https://github.com/pcnate"
 	},
 	"contributors": [
 		{
@@ -26,10 +26,10 @@
 			"url": "https://github.com/pcnate"
 		}
 	],
-	"homepage": "https://github.com/node-fun/execsql",
+	"homepage": "https://github.com/pcnate/exec-mssql",
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:node-fun/execsql.git"
+		"url": "git@github.com:pcnate/exec-mssql.git"
 	},
 	"license": "BSD-2-Clause",
 	"dependencies": {
@@ -39,9 +39,9 @@
 		"underscore": "^1.8.3"
 	},
 	"bin": {
-		"execsql": "./bin/execsql"
+		"exec-mssql": "./bin/exec-mssql"
 	},
 	"bugs": {
-		"url": "https://github.com/node-fun/execsql/issues"
+		"url": "https://github.com/pcnate/exec-mssql/issues"
 	}
 }
