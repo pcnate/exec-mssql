@@ -39,7 +39,7 @@
 		"underscore": "^1.8.3"
 	},
 	"bin": {
-		"exec-mssql": "./bin/exec-mssql"
+		"exec_mssql": "./bin/exec_mssql"
 	},
 	"bugs": {
 		"url": "https://github.com/pcnate/exec-mssql/issues"
